@@ -67,6 +67,9 @@ private struct HTMLVisitor: MarkupVisitor {
 
     // Track whether we are inside a table head to differentiate <th> vs <td>
     private var inTableHead = false
+    // Track column alignments from the current table
+    private var columnAlignments: [Table.ColumnAlignment?] = []
+    private var currentColumnIndex = 0
 
     // MARK: - Default
 
@@ -141,12 +144,15 @@ private struct HTMLVisitor: MarkupVisitor {
     // MARK: - Table Elements
 
     mutating func visitTable(_ table: Table) -> String {
+        columnAlignments = table.columnAlignments
         let content = defaultVisit(table)
+        columnAlignments = []
         return "<table>\(content)</table>\n"
     }
 
     mutating func visitTableHead(_ tableHead: Table.Head) -> String {
         inTableHead = true
+        currentColumnIndex = 0
         let content = defaultVisit(tableHead)
         inTableHead = false
         return "<thead>\(content)</thead>\n"
@@ -158,6 +164,7 @@ private struct HTMLVisitor: MarkupVisitor {
     }
 
     mutating func visitTableRow(_ tableRow: Table.Row) -> String {
+        currentColumnIndex = 0
         let content = defaultVisit(tableRow)
         return "<tr>\(content)</tr>\n"
     }
@@ -167,7 +174,8 @@ private struct HTMLVisitor: MarkupVisitor {
         let tag = inTableHead ? "th" : "td"
 
         var alignAttr = ""
-        if let alignment = tableCell.columnAlignment {
+        if currentColumnIndex < columnAlignments.count,
+           let alignment = columnAlignments[currentColumnIndex] {
             switch alignment {
             case .left:
                 alignAttr = " style=\"text-align: left;\""
@@ -177,6 +185,7 @@ private struct HTMLVisitor: MarkupVisitor {
                 alignAttr = " style=\"text-align: right;\""
             }
         }
+        currentColumnIndex += 1
 
         return "<\(tag)\(alignAttr)>\(content)</\(tag)>"
     }

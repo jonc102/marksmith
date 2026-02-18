@@ -1,5 +1,6 @@
 import AppKit
 
+@MainActor
 class ClipboardMonitor {
     private let appState: AppState
     private let detector = MarkdownDetector()
@@ -24,7 +25,9 @@ class ClipboardMonitor {
             withTimeInterval: Constants.pollingInterval,
             repeats: true
         ) { [weak self] _ in
-            self?.checkClipboard()
+            Task { @MainActor in
+                self?.checkClipboard()
+            }
         }
         // Ensure timer fires during UI tracking (e.g., menu open)
         RunLoop.current.add(timer!, forMode: .common)
@@ -74,9 +77,7 @@ class ClipboardMonitor {
         lastChangeCount = pasteboard.changeCount
 
         // 10. Update app state
-        Task { @MainActor in
-            appState.conversionCount += 1
-            appState.lastConversionDate = Date()
-        }
+        appState.conversionCount += 1
+        appState.lastConversionDate = Date()
     }
 }
