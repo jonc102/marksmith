@@ -342,6 +342,23 @@ enum Constants {
 
 ---
 
+## Documentation Maintenance
+
+`CLAUDE.md` and `README.md` must be kept in sync as implementation proceeds. Update them at each milestone:
+
+| Milestone | CLAUDE.md Updates | README.md Updates |
+|-----------|-------------------|-------------------|
+| 1 — Skeleton | Confirm architecture matches actual files; update commands if project.yml changes | No changes needed |
+| 2 — Detection | Update Key Files if interfaces changed; add any new gotchas discovered | No changes needed |
+| 3 — Converter | Update Interface Contracts if signatures evolved; note any threading gotchas | No changes needed |
+| 4 — Clipboard | Update data flow if pipeline changed; add integration gotchas | No changes needed |
+| 5 — UI & Settings | Update Key Files with final view files; confirm settings list | Update Features section if any were added/cut |
+| 6 — Build & Release | Verify all Commands work as documented; remove "planned" qualifiers | Update Installation with actual release link; confirm build-from-source steps work |
+
+**Rule**: Before marking a milestone as complete, verify that CLAUDE.md and README.md accurately reflect the current state of the codebase. Remove any references to planned/future structure that now exists.
+
+---
+
 ## Verification Plan
 
 1. **Unit tests**: `xcodebuild test` — detector covers 15+ positive, 5+ negative, edge cases; converter tests all GFM elements
