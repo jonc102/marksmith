@@ -162,39 +162,15 @@ MarkdownPaste/
 
 ## Remaining Tasks
 
-### Milestone 7: Build Verification & Xcode Setup
+### Milestone 7: Build Verification & Xcode Setup ✅
+
 **Goal**: Verify the project compiles and all tests pass in Xcode.
 
-**Prerequisites**: Xcode 15+ must be installed and the license accepted (`sudo xcodebuild -license accept`).
+- [x] Run `xcodegen generate` to create fresh `.xcodeproj`
+- [x] Build the app: `xcodebuild build -project MarkdownPaste.xcodeproj -scheme MarkdownPaste`
+- [x] Run all tests: `xcodebuild test -project MarkdownPaste.xcodeproj -scheme MarkdownPaste`
 
-- [ ] Run `xcodegen generate` to create fresh `.xcodeproj`
-- [ ] Open `MarkdownPaste.xcodeproj` in Xcode
-- [ ] Resolve any SPM dependency issues (Xcode should auto-fetch `swift-markdown`)
-- [ ] Build the app: `xcodebuild build -project MarkdownPaste.xcodeproj -scheme MarkdownPaste -destination 'platform=macOS'`
-- [ ] Fix any compilation errors:
-  - Verify `Table.Cell.columnAlignment` property exists in the resolved swift-markdown version (if not, wrap in `#if` or remove alignment handling)
-  - Verify `Strikethrough` type is available (requires swift-markdown to parse with `parseBlockDirectives` option or GFM extension)
-  - Verify `@MainActor` isolation warnings — `ClipboardMonitor.checkClipboard()` accesses `AppState` properties from timer callback (runs on main thread but not annotated `@MainActor`)
-- [ ] Run all tests: `xcodebuild test -project MarkdownPaste.xcodeproj -scheme MarkdownPaste -destination 'platform=macOS'`
-- [ ] Fix any test failures
-
-**How to execute**:
-```bash
-# 1. Accept Xcode license if needed
-sudo xcodebuild -license accept
-
-# 2. Generate and build
-cd /Users/jonathancheung/Documents/GitHub/markdown-copy-tool
-xcodegen generate
-xcodebuild build -project MarkdownPaste.xcodeproj -scheme MarkdownPaste -destination 'platform=macOS' 2>&1 | tee build.log
-
-# 3. If build fails, check build.log for errors and fix source files
-
-# 4. Run tests
-xcodebuild test -project MarkdownPaste.xcodeproj -scheme MarkdownPaste -destination 'platform=macOS' 2>&1 | tee test.log
-```
-
-**Acceptance**: `xcodebuild build` succeeds with 0 errors. `xcodebuild test` passes all 56 tests.
+**Result**: Build succeeded with 0 errors. All 70 tests pass.
 
 ---
 
