@@ -6,7 +6,7 @@ struct MarkdownPasteApp: App {
     @StateObject private var appState = AppState.shared
 
     var body: some Scene {
-        MenuBarExtra("MarkdownPaste", systemImage: "doc.richtext") {
+        MenuBarExtra("MarkdownPaste", image: "MenuBarIcon") {
             MenuBarView()
                 .environmentObject(appState)
         }
