@@ -145,6 +145,12 @@ static let licenseValidationTimeout: TimeInterval // 15
 - Use `.anchorsMatchLines` option for regex patterns that use `^` or `$` anchors
 - Use `@Environment(\.openSettings)` (macOS 14+) + `NSApplication.shared.activate()` for the Settings button — this both opens and raises the window. `SettingsLink` does not activate the app and fails to raise an already-open window in menu bar–only apps (`LSUIElement = true`). `NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)` is unreliable in SwiftUI; `SettingsLink` uses an internal SwiftUI mechanism, not that selector. Fall back to `SettingsLink` on macOS 13.
 
+## SwiftUI Layout
+
+- Settings tab views need `.padding(N).frame(maxWidth: .infinity, alignment: .leading)` on their outer VStack — `@ViewBuilder` bodies don't auto-stretch views to fill proposed width
+- Order matters: `.padding(24).frame(maxWidth: .infinity)` is correct (frame receives full width, padding subtracts insets); reversed would add overflow
+- All `Setting*Row` components use the same HStack pattern: icon (28×28) → `VStack(title+description)` → `Spacer()` → control (Toggle / Picker / etc.)
+
 ## Gotchas
 
 - **No clipboard notification API on macOS** — must poll with `Timer`; 0.5s is the sweet spot for responsiveness vs CPU
