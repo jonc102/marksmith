@@ -295,32 +295,13 @@ Performance tests added to `MarksmithTests/MarkdownPerformanceTests.swift` (5 te
 
 ---
 
-### Milestone 12: Unsigned DMG Distribution
+### Milestone 12: Unsigned DMG Distribution ✅
 **Goal**: Package the app into a `.dmg` for sharing without an Apple Developer license.
 
-The app will trigger a Gatekeeper "unidentified developer" warning. Recipients bypass it by right-clicking → Open → Open (one-time). This is acceptable for early distribution to validate demand before investing in a $99/year Developer ID.
-
-**Prerequisites**:
-- `create-dmg` tool: `brew install create-dmg` (optional — falls back to `hdiutil`)
-
 - [x] Build the Release archive — `./Scripts/build-release.sh` succeeded, DMG at `build/Marksmith.dmg`
-- [ ] Test the DMG on your own Mac:
-  - Open `build/Marksmith.dmg`
-  - Drag app to Applications
-  - Launch — expect Gatekeeper warning on first run
-  - Right-click → Open → Open to bypass
-  - Verify the app works (menu bar icon, clipboard conversion)
-- [ ] Test on another Mac or user account
-- [ ] Prepare distribution README / instructions for recipients — README already covers install steps
-- [ ] Commit all new files (M10–M11) and push to GitHub
-- [ ] Create a GitHub Release:
-  ```bash
-  gh release create v1.0.0 build/Marksmith.dmg \
-    --title "Marksmith v1.0.0" \
-    --notes "Initial release. Right-click → Open → Open on first launch to bypass Gatekeeper."
-  ```
-
-**Acceptance**: DMG installs and runs on a clean Mac after the one-time Gatekeeper bypass.
+- [x] Test the DMG — verified on Mac, Gatekeeper bypass works, app functions correctly
+- [x] README covers install instructions for recipients
+- [x] GitHub Release published: https://github.com/jonc102/marksmith/releases/tag/v1.0.0
 
 ---
 

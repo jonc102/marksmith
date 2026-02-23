@@ -195,6 +195,6 @@ Milestones 1–11 are complete (plus M10 automated portions). See `docs/PLAN.md`
 - ~~**Milestone 9**: App icon design~~ ✓ (app icon + custom M↓ menu bar icon)
 - ~~**Milestone 10**: Performance profiling~~ ✓ (automated; Instruments skipped)
 - ~~**Milestone 11**: GitHub repository setup~~ ✓ (CI, LICENSE, templates, Dependabot)
-- **Milestone 12**: Unsigned DMG distribution + GitHub Release
+- ~~**Milestone 12**: Unsigned DMG distribution + GitHub Release~~ ✓ (v1.0.0 released)
 - **Milestone 13**: Polish & enhancements (v1.1)
 - **Milestone 14**: Monetization — free trial + lifetime unlock (v2.0) — **design complete**, implementation after QA
