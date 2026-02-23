@@ -217,7 +217,7 @@ static let licenseValidationTimeout: TimeInterval // 15
 
 ## Distribution Strategy
 
-**Current (v1.2.0)**: Unsigned DMG via GitHub Releases. Recipients bypass Gatekeeper with right-click → Open → Open on first launch.
+**Current (v1.2.0)**: Unsigned DMG via GitHub Releases. Recipients bypass Gatekeeper via System Settings → Privacy & Security → Security → Open Anyway on first launch.
 
 **Future (v2.0)**: Source-available under FSL (Functional Source License, converts to MIT after 2 years). Signed+notarized DMG via Apple Developer Program. 14-day free trial with full lockout on expiry. One-time lifetime unlock ($9-15 USD) via LemonSqueezy/Gumroad — web checkout → license key → API validation → local cache.
 

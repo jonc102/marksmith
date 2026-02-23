@@ -4,7 +4,7 @@
 
 - [ ] Download `Marksmith.dmg` from [GitHub Releases](https://github.com/jonc102/marksmith/releases/tag/v1.2.0)
 - [ ] Open DMG, drag Marksmith to Applications
-- [ ] Right-click > Open > Open to bypass Gatekeeper
+- [ ] Bypass Gatekeeper: System Settings > Privacy & Security > Security > Open Anyway
 - [ ] App appears in menu bar (no Dock icon)
 
 ## Menu Bar Dropdown

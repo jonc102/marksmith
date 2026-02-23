@@ -130,6 +130,6 @@ echo "=== Build complete ==="
 echo "DMG: $DMG_PATH"
 if [ "$SIGN" != "1" ]; then
     echo ""
-    echo "NOTE: This is an unsigned build. Recipients must right-click → Open → Open"
-    echo "on first launch to bypass Gatekeeper."
+    echo "NOTE: This is an unsigned build. Recipients must go to"
+    echo "System Settings → Privacy & Security → Security → Open Anyway on first launch."
 fi

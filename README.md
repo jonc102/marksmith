@@ -36,7 +36,7 @@ Marksmith sits in your menu bar and watches the clipboard. When it detects Markd
 
 1. Download the latest `.dmg` from [GitHub Releases](https://github.com/jonc102/marksmith/releases/latest).
 2. Open the `.dmg` and drag **Marksmith** to your Applications folder.
-3. On first launch, macOS will block the app because it's unsigned. Right-click the app → **Open** → **Open** to bypass Gatekeeper. After the first launch, double-clicking works normally.
+3. On first launch, macOS will block the app because it's unsigned. Go to **System Settings → Privacy & Security → Security** and click **Open Anyway** next to the Marksmith blocked message. After the first launch, double-clicking works normally.
 
 After the first launch, Marksmith appears as an icon in your menu bar. There is no Dock icon and no main window.
 
@@ -214,7 +214,7 @@ Increase the detection sensitivity toward Conservative.
 Try toggling "Include RTF format" off. Some apps handle HTML better than RTF.
 
 **The app was blocked by macOS on first launch.**
-Right-click → Open → Open. If System Settings > Privacy & Security shows a "blocked" prompt, click "Open Anyway." After the first launch, double-clicking works normally.
+Go to **System Settings → Privacy & Security → Security** and click **Open Anyway**. After the first launch, double-clicking works normally.
 
 **The app disappeared from the menu bar.**
 Relaunch from Applications. If "Launch at Login" was enabled, it will reappear on next login.
