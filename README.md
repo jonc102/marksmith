@@ -34,7 +34,9 @@ Marksmith sits in your menu bar and watches the clipboard. When it detects Markd
 
 ## Installation
 
-> **Note:** A pre-built release is not yet available. Build from source using the instructions below.
+1. Download the latest `.dmg` from [GitHub Releases](https://github.com/jonc102/marksmith/releases/latest).
+2. Open the `.dmg` and drag **Marksmith** to your Applications folder.
+3. On first launch, macOS will block the app because it's unsigned. Right-click the app → **Open** → **Open** to bypass Gatekeeper. After the first launch, double-clicking works normally.
 
 After the first launch, Marksmith appears as an icon in your menu bar. There is no Dock icon and no main window.
 
@@ -239,7 +241,7 @@ xcodebuild build -project Marksmith.xcodeproj -scheme Marksmith
 xcodebuild test -project Marksmith.xcodeproj -scheme Marksmith
 ```
 
-70 unit tests cover the detection engine, Markdown-to-HTML converter, and clipboard writer.
+75 unit tests cover the detection engine, Markdown-to-HTML converter, clipboard writer, and performance benchmarks.
 
 ### Release
 

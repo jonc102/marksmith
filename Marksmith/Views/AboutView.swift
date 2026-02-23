@@ -25,10 +25,22 @@ struct AboutView: View {
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Link("View on GitHub", destination: URL(string: "https://github.com/jonc102/marksmith")!)
+            HStack(spacing: 16) {
+                Link("View on GitHub", destination: URL(string: Constants.githubRepoURL)!)
+                    .font(.system(size: 13))
+
+                Button("Send Feedback") {
+                    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+                    let subject = "Marksmith v\(version) Feedback".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                    if let url = URL(string: "mailto:\(Constants.feedbackEmail)?subject=\(subject)") {
+                        NSWorkspace.shared.open(url)
+                    }
+                }
                 .font(.system(size: 13))
+                .buttonStyle(.link)
+            }
         }
         .padding(32)
-        .frame(width: 360, height: 260)
+        .frame(width: 360, height: 290)
     }
 }

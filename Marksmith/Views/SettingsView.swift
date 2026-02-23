@@ -396,6 +396,34 @@ struct SupportSettingsView: View {
                         }
                     }
                 )
+
+                Divider().padding(.leading, 54)
+
+                SettingLinkRow(
+                    icon: "ladybug",
+                    iconColor: .red,
+                    title: "Report a Bug",
+                    description: "Found something broken? Let us know on GitHub.",
+                    action: {
+                        if let url = URL(string: "\(Constants.githubIssuesURL)/new?template=bug_report.md") {
+                            NSWorkspace.shared.open(url)
+                        }
+                    }
+                )
+
+                Divider().padding(.leading, 54)
+
+                SettingLinkRow(
+                    icon: "lightbulb",
+                    iconColor: .purple,
+                    title: "Request a Feature",
+                    description: "Have an idea? We'd love to hear it.",
+                    action: {
+                        if let url = URL(string: "\(Constants.githubIssuesURL)/new?template=feature_request.md") {
+                            NSWorkspace.shared.open(url)
+                        }
+                    }
+                )
             }
 
             Spacer()

@@ -10,7 +10,7 @@ Swift · SwiftUI · macOS 13+ · `swift-markdown` (SPM) · XcodeGen · Bundle ID
 
 > **Before every release commit**: bump `MARKETING_VERSION` + `CURRENT_PROJECT_VERSION` in `project.yml`, and update "Current version" below.
 
-**Current version**: 1.1.0 (build 2)
+**Current version**: 1.2.0 (build 3)
 
 **Versioning convention** (single source of truth: `project.yml`):
 
@@ -18,17 +18,17 @@ Two independent fields in `project.yml`:
 
 | Field | Current | Meaning |
 |---|---|---|
-| `MARKETING_VERSION` | `1.1.0` | User-visible version shown in About window and App Store |
-| `CURRENT_PROJECT_VERSION` | `2` | Build number — monotonically increasing integer, never resets |
+| `MARKETING_VERSION` | `1.2.0` | User-visible version shown in About window and App Store |
+| `CURRENT_PROJECT_VERSION` | `3` | Build number — monotonically increasing integer, never resets |
 
 **When to bump what:**
 
 | Release type | `MARKETING_VERSION` | `CURRENT_PROJECT_VERSION` | Example |
 |---|---|---|---|
-| Bug fix | Increment patch | +1 | 1.1.0 → 1.1.1, build 3 |
-| New feature | Increment minor, reset patch | +1 | 1.1.0 → 1.2.0, build 3 |
-| Major / monetization | Increment major, reset minor+patch | +1 | 1.1.0 → 2.0.0, build 3 |
-| Beta / hotfix build | No change | +1 | 1.1.0 build 2 → 1.1.0 build 3 |
+| Bug fix | Increment patch | +1 | 1.2.0 → 1.2.1, build 4 |
+| New feature | Increment minor, reset patch | +1 | 1.2.0 → 1.3.0, build 4 |
+| Major / monetization | Increment major, reset minor+patch | +1 | 1.2.0 → 2.0.0, build 4 |
+| Beta / hotfix build | No change | +1 | 1.2.0 build 3 → 1.2.0 build 4 |
 
 **Rules:**
 - `CURRENT_PROJECT_VERSION` always increments for every release build — never resets, never repeats
@@ -86,10 +86,10 @@ Marksmith/
 - `Services/MarkdownDetector.swift` — 15 pre-compiled `NSRegularExpression` patterns with weighted scoring, `.anchorsMatchLines` for `^`/`$` anchors
 - `Services/MarkdownConverter.swift` — `HTMLVisitor` conforming to `MarkupVisitor` (22 visit methods), CSS styling, configurable `fontSize` parameter, RTF via `NSAttributedString`
 - `Services/ClipboardWriter.swift` — Multi-format `NSPasteboardItem` write with self-marker
-- `Views/MenuBarView.swift` — Toggle, conversion status, Settings button, quit with keyboard shortcuts
-- `Views/SettingsView.swift` — Sidebar navigation with General (enable, login, RTF, notifications, font size), Detection (sensitivity slider), and Support (Buy Me a Coffee link) tabs
+- `Views/MenuBarView.swift` — Toggle, conversion status, Send Feedback, Settings button, quit with keyboard shortcuts
+- `Views/SettingsView.swift` — Sidebar navigation with General (enable, login, RTF, notifications, font size), Detection (sensitivity slider), and Support (Buy Me a Coffee, Report a Bug, Request a Feature links) tabs
 - `Utilities/PasteboardTypes.swift` — `NSPasteboard.PasteboardType.markdownPasteMarker` extension
-- `Utilities/Constants.swift` — `pollingInterval` (0.5s), `maxContentSize` (100KB), `defaultDetectionThreshold` (2)
+- `Utilities/Constants.swift` — `pollingInterval` (0.5s), `maxContentSize` (100KB), `defaultDetectionThreshold` (2), `feedbackEmail`, `githubIssuesURL`, `githubRepoURL`
 
 **Planned (v2.0)** — these files do not exist yet:
 - `Models/LicenseState.swift` — `LicenseState` enum: `.trial(daysRemaining:)`, `.expired`, `.licensed` with computed `canConvert` and `statusText`
@@ -217,7 +217,7 @@ static let licenseValidationTimeout: TimeInterval // 15
 
 ## Distribution Strategy
 
-**Current (v1.0)**: Unsigned DMG via GitHub Releases. Recipients bypass Gatekeeper with right-click → Open → Open on first launch.
+**Current (v1.2.0)**: Unsigned DMG via GitHub Releases. Recipients bypass Gatekeeper with right-click → Open → Open on first launch.
 
 **Future (v2.0)**: Source-available under FSL (Functional Source License, converts to MIT after 2 years). Signed+notarized DMG via Apple Developer Program. 14-day free trial with full lockout on expiry. One-time lifetime unlock ($9-15 USD) via LemonSqueezy/Gumroad — web checkout → license key → API validation → local cache.
 
@@ -231,4 +231,5 @@ Milestones 1–11 are complete (plus M10 automated portions). See `docs/PLAN.md`
 - ~~**Milestone 11**: GitHub repository setup~~ ✓ (CI, LICENSE, templates, Dependabot)
 - ~~**Milestone 12**: Unsigned DMG distribution + GitHub Release~~ ✓ (v1.0.0 released)
 - ~~**Milestone 13**: About window~~ ✓ (v1.1.0 — `AboutView.swift`, `Window` scene, menu bar entry)
+- ~~**Milestone 13.5**: Early feedback release~~ ✓ (v1.2.0 — feedback links in menu bar, Settings, About window)
 - **Milestone 14**: Monetization — free trial + lifetime unlock (v2.0) — **design complete**, implementation after QA

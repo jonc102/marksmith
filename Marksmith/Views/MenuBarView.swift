@@ -99,6 +99,15 @@ struct MenuBarView: View {
                 openWindow(id: "about")
             }
 
+            // Send Feedback
+            MenuBarActionRow(label: "Send Feedback...", shortcut: "") {
+                let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+                let subject = "Marksmith v\(version) Feedback".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                if let url = URL(string: "mailto:\(Constants.feedbackEmail)?subject=\(subject)") {
+                    NSWorkspace.shared.open(url)
+                }
+            }
+
             // Settings
             if #available(macOS 14, *) {
                 SettingsButton()

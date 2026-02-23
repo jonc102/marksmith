@@ -312,6 +312,26 @@ Performance tests added to `MarksmithTests/MarkdownPerformanceTests.swift` (5 te
 
 ---
 
+### Milestone 13.5: Early Feedback Release (v1.2.0) ✅
+**Goal**: Add lightweight feedback channels before investing in monetization. Validate demand and collect user feedback.
+
+- [x] Add `feedbackEmail`, `githubIssuesURL`, `githubRepoURL` to `Constants.swift`
+- [x] Add "Send Feedback..." row to menu bar dropdown (`MenuBarView.swift`) — opens `mailto:` with app version in subject
+- [x] Add "Report a Bug" and "Request a Feature" links to Settings > Support tab (`SettingsView.swift`) — opens GitHub Issues templates
+- [x] Add "Send Feedback" link to About window (`AboutView.swift`) — opens `mailto:` with app version in subject
+- [x] Fix README installation section — link to GitHub Releases, Gatekeeper bypass instructions
+- [x] Fix README test count: 70 → 75
+- [x] Bump version to 1.2.0 (build 3) in `project.yml`
+- [x] Update CLAUDE.md — version, key files descriptions, distribution strategy, milestone entry
+- [ ] `xcodegen generate` + build + run all 75 tests
+- [ ] Build unsigned DMG via `./Scripts/build-release.sh`
+- [ ] Smoke-test: install DMG, verify feedback links, run a conversion, check About shows v1.2.0
+- [ ] Merge to `main`, tag `v1.2.0`, push tag
+- [ ] Create GitHub Release with DMG attached via `gh release create`
+- [ ] Set repo description, topics, enable Discussions
+
+---
+
 ### Milestone 14: Monetization — Free Trial + Lifetime Unlock (v2.0)
 **Goal**: Monetize with a 14-day free trial and one-time lifetime purchase ($9-15 USD) via LemonSqueezy/Gumroad. Source-available under FSL (Functional Source License).
 
