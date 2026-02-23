@@ -323,12 +323,12 @@ Performance tests added to `MarksmithTests/MarkdownPerformanceTests.swift` (5 te
 - [x] Fix README test count: 70 → 75
 - [x] Bump version to 1.2.0 (build 3) in `project.yml`
 - [x] Update CLAUDE.md — version, key files descriptions, distribution strategy, milestone entry
-- [ ] `xcodegen generate` + build + run all 75 tests
-- [ ] Build unsigned DMG via `./Scripts/build-release.sh`
-- [ ] Smoke-test: install DMG, verify feedback links, run a conversion, check About shows v1.2.0
-- [ ] Merge to `main`, tag `v1.2.0`, push tag
-- [ ] Create GitHub Release with DMG attached via `gh release create`
-- [ ] Set repo description, topics, enable Discussions
+- [x] `xcodegen generate` + build + run all 75 tests
+- [x] Build unsigned DMG via `./Scripts/build-release.sh`
+- [x] Smoke-test: install DMG, verify feedback links, run a conversion, check About shows v1.2.0
+- [x] Merge to `main`, tag `v1.2.0`, push tag
+- [x] Create GitHub Release with DMG attached via `gh release create`
+- [x] Set repo description, topics
 
 ---
 
