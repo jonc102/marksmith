@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# MarkdownPaste Build & Release Script
+# Marksmith Build & Release Script
 # Builds and packages the app into a DMG.
 #
 # Usage:
@@ -19,8 +19,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-APP_NAME="MarkdownPaste"
-SCHEME="MarkdownPaste"
+APP_NAME="Marksmith"
+SCHEME="Marksmith"
 CONFIGURATION="Release"
 BUILD_DIR="${PROJECT_DIR}/build"
 ARCHIVE_PATH="${BUILD_DIR}/${APP_NAME}.xcarchive"
@@ -30,7 +30,7 @@ DMG_PATH="${BUILD_DIR}/${APP_NAME}.dmg"
 SIGN="${SIGN:-0}"
 NOTARIZE="${NOTARIZE:-0}"
 
-echo "=== MarkdownPaste Release Build ==="
+echo "=== Marksmith Release Build ==="
 echo "Mode: $([ "$SIGN" = "1" ] && echo "Signed" || echo "Unsigned") $([ "$NOTARIZE" = "1" ] && echo "+ Notarized" || echo "")"
 echo ""
 

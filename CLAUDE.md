@@ -1,8 +1,8 @@
-# MarkdownPaste
+# Marksmith
 
 macOS menu bar utility that monitors the clipboard, detects Markdown content, converts it to rich text (HTML + RTF), and writes it back so pasting renders formatted text in any app.
 
-Swift · SwiftUI · macOS 13+ · `swift-markdown` (SPM) · XcodeGen · Bundle ID: `com.jonathancheung.MarkdownPaste`
+Swift · SwiftUI · macOS 13+ · `swift-markdown` (SPM) · XcodeGen · Bundle ID: `com.jonathancheung.Marksmith`
 
 ## Prerequisites
 
@@ -14,9 +14,9 @@ Swift · SwiftUI · macOS 13+ · `swift-markdown` (SPM) · XcodeGen · Bundle ID
 | Command | Description |
 |---------|-------------|
 | `xcodegen generate` | Generate `.xcodeproj` from `project.yml` |
-| `xcodebuild build -project MarkdownPaste.xcodeproj -scheme MarkdownPaste` | Build the app |
-| `xcodebuild test -project MarkdownPaste.xcodeproj -scheme MarkdownPaste` | Run all 70 unit tests |
-| `xcodebuild test -only-testing:MarkdownPasteTests/MarkdownDetectorTests` | Run a single test class |
+| `xcodebuild build -project Marksmith.xcodeproj -scheme Marksmith` | Build the app |
+| `xcodebuild test -project Marksmith.xcodeproj -scheme Marksmith` | Run all 70 unit tests |
+| `xcodebuild test -only-testing:MarksmithTests/MarkdownDetectorTests` | Run a single test class |
 | `./Scripts/build-release.sh` | Build and package unsigned DMG |
 | `SIGN=1 ./Scripts/build-release.sh` | Build signed DMG (requires Developer ID) |
 | `SIGN=1 NOTARIZE=1 ./Scripts/build-release.sh` | Build signed + notarized DMG |
@@ -24,14 +24,14 @@ Swift · SwiftUI · macOS 13+ · `swift-markdown` (SPM) · XcodeGen · Bundle ID
 ## Architecture
 
 ```
-MarkdownPaste/
-├── MarkdownPaste/
-│   ├── App/           # MarkdownPasteApp.swift (@main), AppDelegate, AppState
+Marksmith/
+├── Marksmith/
+│   ├── App/           # MarksmithApp.swift (@main), AppDelegate, AppState
 │   ├── Views/         # MenuBarView (dropdown), SettingsView (General + Detection + Support tabs)
 │   ├── Services/      # ClipboardMonitor, MarkdownDetector, MarkdownConverter, ClipboardWriter
 │   ├── Utilities/     # Constants, PasteboardTypes (marker extension)
 │   └── Resources/     # Assets.xcassets, Info.plist
-├── MarkdownPasteTests/  # 70 tests: detector (31), converter (27), writer (12)
+├── MarksmithTests/  # 70 tests: detector (31), converter (27), writer (12)
 ├── Scripts/             # build-release.sh, ExportOptions.plist, generate-icon.swift, generate-menubar-icon.swift
 ├── docs/                # PLAN.md, QA.md
 └── project.yml          # XcodeGen configuration
@@ -41,7 +41,7 @@ MarkdownPaste/
 
 ## Key Files
 
-- `App/MarkdownPasteApp.swift` — `@main` entry point, `MenuBarExtra` + `Settings` scenes
+- `App/MarksmithApp.swift` — `@main` entry point, `MenuBarExtra` + `Settings` scenes
 - `App/AppState.swift` — `@MainActor` singleton with `@AppStorage` preferences, `SMAppService` login item management
 - `App/AppDelegate.swift` — Creates and manages `ClipboardMonitor` lifecycle
 - `Services/ClipboardMonitor.swift` — Timer-based polling with guard pipeline, `hasSemanticHTML()` to skip rich clipboard from browsers while allowing code editor HTML, `[weak self]` timer, `.common` RunLoop mode, optional `UNUserNotificationCenter` conversion notifications
@@ -184,9 +184,9 @@ static let licenseValidationTimeout: TimeInterval // 15
 
 ## Implementation Status
 
-Milestones 1–7 and 9 are complete. See `docs/PLAN.md` for remaining tasks:
-- ~~**Milestone 7**: Build verification~~ ✓ (70 tests passing)
-- **Milestone 8**: Manual QA testing
+Milestones 1–9 are complete. See `docs/PLAN.md` for remaining tasks:
+- ~~**Milestone 7**: Build verification~~ ✓ (75 tests passing)
+- ~~**Milestone 8**: Manual QA testing~~ ✓
 - ~~**Milestone 9**: App icon design~~ ✓ (app icon + custom M↓ menu bar icon)
 - **Milestone 10**: Performance profiling
 - **Milestone 11**: GitHub repository setup for production (branch protection, CI, LICENSE, templates)

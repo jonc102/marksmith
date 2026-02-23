@@ -1,5 +1,5 @@
 import XCTest
-@testable import MarkdownPaste
+@testable import Marksmith
 
 final class MarkdownConverterTests: XCTestCase {
 
