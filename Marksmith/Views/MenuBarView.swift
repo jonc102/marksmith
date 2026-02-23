@@ -59,7 +59,7 @@ struct MenuBarView: View {
 
             // Enable toggle row
             HStack(spacing: 10) {
-                Text("MarkdownPaste")
+                Text("Marksmith")
                     .font(.system(size: 13, weight: .semibold))
                 Spacer()
                 Toggle("", isOn: $appState.isEnabled)
@@ -112,7 +112,7 @@ struct MenuBarView: View {
             }
 
             // Quit
-            MenuBarActionRow(label: "Quit MarkdownPaste", shortcut: "⌘Q") {
+            MenuBarActionRow(label: "Quit Marksmith", shortcut: "⌘Q") {
                 NSApplication.shared.terminate(nil)
             }
             .keyboardShortcut("q", modifiers: [.command])

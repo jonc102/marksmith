@@ -1,4 +1,4 @@
-# MarkdownPaste — Milestone 8 QA Checklist
+# Marksmith — Milestone 8 QA Checklist
 
 **Build**: Debug
 **macOS target**: 13+
@@ -27,7 +27,7 @@ Mark each item `[x]` when it passes, `[!]` when it fails (add notes below the it
 - [x] After a conversion: "Conversions: N" and "Last: X ago" appear
 - [x] "Settings..." button is present
 - [x] `⌘,` keyboard shortcut opens Settings
-- [x] "Quit MarkdownPaste" button is present
+- [x] "Quit Marksmith" button is present
 - [x] `⌘Q` keyboard shortcut quits the app
 
 ---
@@ -45,7 +45,7 @@ Mark each item `[x]` when it passes, `[!]` when it fails (add notes below the it
 ## 4. Settings — General Tab
 
 - [x] "General" is selected by default in the sidebar
-- [x] **Enable MarkdownPaste** toggle reflects current state
+- [x] **Enable Marksmith** toggle reflects current state
   - [x] Toggling off stops conversions (copy Markdown → no enrichment)
   - [x] Toggling on resumes conversions
 - [x] **Launch at Login** toggle works
@@ -250,7 +250,7 @@ Paste a converted Markdown snippet (e.g., `**bold** and *italic*`) into each app
 
 ## 12. Quit & Relaunch
 
-- [x] Quitting via "Quit MarkdownPaste" exits the app cleanly
+- [x] Quitting via "Quit Marksmith" exits the app cleanly
 - [x] Quitting via `⌘Q` from dropdown exits cleanly
 - [x] Relaunching: all settings persist (enable state, sensitivity, font size, RTF toggle)
 - [x] Conversion count resets to 0 on relaunch (runtime-only state — expected)
@@ -281,15 +281,15 @@ _Record any failures, unexpected behaviour, or observations here._
 [!] TC-04b: Wrong app icon shown in macOS Login Items
     Steps: Toggle "Launch at Login" ON in Settings → General, then open
            System Settings > General > Login Items
-    Expected: MarkdownPaste custom app icon (M↓ design)
-    Actual: Generic/incorrect icon displayed next to "MarkdownPaste" in
+    Expected: Marksmith custom app icon (M↓ design)
+    Actual: Generic/incorrect icon displayed next to "Marksmith" in
             the Login Items list
     Note: Likely the debug build lacks a properly bundled icon asset, or
           SMAppService is referencing the wrong bundle; verify with a
           release build
 
 [!] TC-04c: Converted Markdown pastes as raw plain text in Pages
-    Steps: 1. Enable MarkdownPaste (RTF ON or OFF)
+    Steps: 1. Enable Marksmith (RTF ON or OFF)
            2. Copy a Markdown snippet (e.g. QA checklist with **bold** and [ ])
            3. Wait for conversion (count incremented, time reset — confirmed)
            4. Paste into Pages
@@ -311,7 +311,7 @@ _Record any failures, unexpected behaviour, or observations here._
     Actual: Toggle appears interactive but does nothing; user has no indication
             that permission is the cause or how to fix it
     Resolution: Enabling notifications in System Settings → Notifications →
-                MarkdownPaste restores toggle functionality — confirmed working
+                Marksmith restores toggle functionality — confirmed working
     Severity: UX issue — functionality works once permission is granted, but
               discoverability is poor for users who denied the initial prompt
 
@@ -329,7 +329,7 @@ _Record any failures, unexpected behaviour, or observations here._
 
 [!] TC-04f: App icon missing in notifications and Notification Centre
     Steps: Trigger a conversion notification
-    Expected: MarkdownPaste app icon shown alongside notification
+    Expected: Marksmith app icon shown alongside notification
     Actual: Empty/blank grid placeholder icon displayed
     Related: Same root cause as TC-04b — debug build lacks properly bundled
              icon asset; verify with a release build
@@ -341,7 +341,7 @@ _Record any failures, unexpected behaviour, or observations here._
     Note: Strikethrough confirmed working in Apple Notes. Google Docs uses its
           own internal clipboard format (similar to Pages) and may ignore the
           HTML/RTF strikethrough styling. May be a Google Docs limitation
-          rather than a MarkdownPaste bug — investigate HTML output for
+          rather than a Marksmith bug — investigate HTML output for
           strikethrough tag used (<s> vs <del> vs <strike>)
 
 [!] TC-07b: Task list items render as bullet points instead of checkboxes
@@ -362,7 +362,7 @@ _Record any failures, unexpected behaviour, or observations here._
     Note: Confirmed working in Apple Notes. Google Docs and Notion both use
           their own internal clipboard formats and may strip <blockquote>
           styling. Likely an app-specific limitation consistent with TC-04c
-          and TC-07a; not necessarily a MarkdownPaste bug
+          and TC-07a; not necessarily a Marksmith bug
 
 [!] TC-07d: Horizontal rule does not render in Notion or Apple Notes
     Steps: Copy "---", wait for conversion, paste into Notion and Apple Notes
@@ -374,7 +374,7 @@ _Record any failures, unexpected behaviour, or observations here._
           compatibility issue — worth inspecting the generated HTML
 
 [!] TC-09a: Re-enabling monitoring converts pre-existing clipboard content
-    Steps: 1. Enable MarkdownPaste
+    Steps: 1. Enable Marksmith
            2. Toggle monitoring OFF via menu bar
            3. Copy a Markdown snippet while monitoring is off
            4. Toggle monitoring back ON (without copying anything new)
@@ -393,13 +393,13 @@ _Record any failures, unexpected behaviour, or observations here._
                the right (consistent with BetterDisplay's menu bar UI style)
     Design:
       ┌─────────────────────────────────┐
-      │  MarkdownPaste          [●    ] │  ← toggle right-aligned, blue when ON
+      │  Marksmith          [●    ] │  ← toggle right-aligned, blue when ON
       ├─────────────────────────────────┤
       │  Conversions: 6                 │
       │  Last: 5 min. ago               │
       ├─────────────────────────────────┤
       │  Settings...            ⌘,      │
-      │  Quit MarkdownPaste     ⌘Q      │
+      │  Quit Marksmith     ⌘Q      │
       └─────────────────────────────────┘
     Notes: ⌘E shortcut should be preserved. Requires replacing the Button/
            Label menu item with a custom SwiftUI view inside MenuBarExtra
@@ -418,7 +418,7 @@ _Record any failures, unexpected behaviour, or observations here._
 
 ### V1 — TC-09a: Monitor re-enable must not convert pre-existing clipboard
 
-- [x] Enable MarkdownPaste
+- [x] Enable Marksmith
 - [x] Toggle monitoring **OFF** via menu bar (`⌘E`)
 - [x] Copy a Markdown snippet (e.g. `**bold** and *italic*`) while monitoring is off
 - [x] Toggle monitoring back **ON** — conversion count must NOT increment

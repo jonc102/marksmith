@@ -23,6 +23,6 @@
     <key>LSUIElement</key>
     <true/>
     <key>NSPasteboardUsageDescription</key>
-    <string>MarkdownPaste monitors your clipboard to detect and convert Markdown content to rich text for formatted pasting.</string>
+    <string>Marksmith monitors your clipboard to detect and convert Markdown content to rich text for formatted pasting.</string>
 </dict>
 </plist>

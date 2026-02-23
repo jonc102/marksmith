@@ -273,7 +273,7 @@ struct GeneralSettingsView: View {
                     SettingToggleRow(
                         icon: "power",
                         iconColor: .green,
-                        title: "Enable MarkdownPaste",
+                        title: "Enable Marksmith",
                         description: "Monitor clipboard and convert Markdown automatically",
                         isOn: $appState.isEnabled
                     )
@@ -284,7 +284,7 @@ struct GeneralSettingsView: View {
                         icon: "arrow.up.to.line",
                         iconColor: .blue,
                         title: "Launch at Login",
-                        description: "Start MarkdownPaste when you log in",
+                        description: "Start Marksmith when you log in",
                         isOn: $appState.launchAtLogin
                     )
 
@@ -379,7 +379,7 @@ struct SupportSettingsView: View {
                 .font(.system(size: 20, weight: .bold))
                 .padding(.bottom, 4)
 
-            Text("Thank you for using MarkdownPaste! If you find it useful, consider supporting its development.")
+            Text("Thank you for using Marksmith! If you find it useful, consider supporting its development.")
                 .font(.system(size: 13))
                 .foregroundColor(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -389,7 +389,7 @@ struct SupportSettingsView: View {
                     icon: "heart.fill",
                     iconColor: .yellow,
                     title: "Buy Me a Coffee",
-                    description: "If you enjoy MarkdownPaste, consider supporting its development.",
+                    description: "If you enjoy Marksmith, consider supporting its development.",
                     action: {
                         if let url = URL(string: "https://buymeacoffee.com/jonc102") {
                             NSWorkspace.shared.open(url)
