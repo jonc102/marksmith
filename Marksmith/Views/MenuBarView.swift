@@ -53,6 +53,7 @@ private struct MenuBarActionRow: View {
 
 struct MenuBarView: View {
     @EnvironmentObject var appState: AppState
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         VStack(spacing: 0) {
@@ -91,6 +92,12 @@ struct MenuBarView: View {
             .padding(.vertical, 8)
 
             Divider()
+
+            // About
+            MenuBarActionRow(label: "About Marksmith", shortcut: "") {
+                NSApplication.shared.activate()
+                openWindow(id: "about")
+            }
 
             // Settings
             if #available(macOS 14, *) {

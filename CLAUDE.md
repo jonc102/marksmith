@@ -8,6 +8,18 @@ Swift · SwiftUI · macOS 13+ · `swift-markdown` (SPM) · XcodeGen · Bundle ID
 
 > **Before every commit**: review and update this file to reflect any changes to architecture, file structure, test counts, commands, gotchas, or implementation status. CLAUDE.md is the source of truth for the project — it must never be stale.
 
+> **Before every release commit**: bump `MARKETING_VERSION` + `CURRENT_PROJECT_VERSION` in `project.yml`, and update "Current version" below.
+
+**Current version**: 1.1.0 (build 2)
+
+**Versioning convention** (single source of truth: `project.yml → MARKETING_VERSION`):
+
+| Release type | Example | When |
+|---|---|---|
+| Patch | 1.0.1 | Bug fixes |
+| Minor | 1.1.0 | New features |
+| Major | 2.0.0 | Monetization (M14) |
+
 ## Prerequisites
 
 - Xcode 15+
@@ -31,7 +43,7 @@ Swift · SwiftUI · macOS 13+ · `swift-markdown` (SPM) · XcodeGen · Bundle ID
 Marksmith/
 ├── Marksmith/
 │   ├── App/           # MarksmithApp.swift (@main), AppDelegate, AppState
-│   ├── Views/         # MenuBarView (dropdown), SettingsView (General + Detection + Support tabs)
+│   ├── Views/         # MenuBarView (dropdown), SettingsView (General + Detection + Support tabs), AboutView
 │   ├── Services/      # ClipboardMonitor, MarkdownDetector, MarkdownConverter, ClipboardWriter
 │   ├── Utilities/     # Constants, PasteboardTypes (marker extension)
 │   └── Resources/     # Assets.xcassets, Info.plist
@@ -196,5 +208,5 @@ Milestones 1–11 are complete (plus M10 automated portions). See `docs/PLAN.md`
 - ~~**Milestone 10**: Performance profiling~~ ✓ (automated; Instruments skipped)
 - ~~**Milestone 11**: GitHub repository setup~~ ✓ (CI, LICENSE, templates, Dependabot)
 - ~~**Milestone 12**: Unsigned DMG distribution + GitHub Release~~ ✓ (v1.0.0 released)
-- **Milestone 13**: Polish & enhancements (v1.1)
+- ~~**Milestone 13**: About window~~ ✓ (v1.1.0 — `AboutView.swift`, `Window` scene, menu bar entry)
 - **Milestone 14**: Monetization — free trial + lifetime unlock (v2.0) — **design complete**, implementation after QA

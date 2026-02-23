@@ -16,5 +16,10 @@ struct MarksmithApp: App {
             SettingsView()
                 .environmentObject(appState)
         }
+
+        Window("About Marksmith", id: "about") {
+            AboutView()
+        }
+        .windowResizability(.contentSize)
     }
 }

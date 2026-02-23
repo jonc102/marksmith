@@ -305,36 +305,10 @@ Performance tests added to `MarksmithTests/MarkdownPerformanceTests.swift` (5 te
 
 ---
 
-### Milestone 13: Polish & Enhancements (v1.1)
-**Goal**: Quality-of-life improvements based on early user feedback.
+### Milestone 13: Polish & Enhancements (v1.1) ✅
+**Goal**: About window — standard macOS utility feature showing app name, version, and GitHub link.
 
-Prioritize based on what users actually request:
-
-- [ ] **Dynamic menu bar icon**: Show different icon states (enabled vs disabled, conversion in progress)
-  - Use `Image("MenuBarIcon")` / `Image("MenuBarIconDisabled")` in `MenuBarExtra` for enabled/disabled states
-- [ ] **Conversion notification**: Brief system notification or menu bar flash on successful conversion
-  - Use `UNUserNotificationCenter` for optional toast notifications
-- [ ] **Exclude-app list**: Allow users to disable conversion when copying from specific apps
-  - Read `NSPasteboard.general.name` or check frontmost app via `NSWorkspace.shared.frontmostApplication`
-  - Store excluded bundle IDs in `@AppStorage`
-- [ ] **Custom CSS themes**: Let users customize the HTML styling (light/dark, font, colors)
-  - Add a "Theme" tab in Settings with presets (Default, GitHub, Minimal)
-  - Store custom CSS in `@AppStorage` as a string
-- [ ] **Conversion history log**: Show recent conversions in the menu bar dropdown
-  - Store last N conversions as `[(date: Date, preview: String)]` in memory
-  - Display in a submenu below the status line
-- [ ] **Keyboard shortcut**: Global hotkey to toggle enable/disable
-  - Use `KeyboardShortcuts` SPM package or `NSEvent.addGlobalMonitorForEvents`
-- [ ] **About window**: Show version, credits, and link to GitHub
-  - Create `AboutView.swift` with app icon, version from `Bundle.main`, and links
-- [ ] **First-run onboarding**: Brief explanation on first launch
-  - Show a welcome window on first launch (check `UserDefaults` flag)
-  - Request clipboard access permission explicitly
-- [ ] **Dark mode CSS**: Detect system appearance and apply matching CSS
-  - Use `@Environment(\.colorScheme)` or `NSApp.effectiveAppearance` to switch CSS
-- [ ] **Paste preview**: Show a small preview of converted output before writing to clipboard
-  - Add a "Preview before converting" toggle in Settings
-  - Display a small popover with HTML preview using `WKWebView`
+- [x] **About window**: `AboutView.swift` with app icon, version from `Bundle.main`, one-line description, and GitHub link. Opened via "About Marksmith" in the menu bar dropdown (`openWindow(id: "about")`). Non-resizable, 360×260.
 
 ---
 
