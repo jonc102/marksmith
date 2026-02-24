@@ -7,7 +7,7 @@ enum Constants {
     static let maxContentSize: Int = 100_000
     static let defaultDetectionThreshold: Int = 2
 
-    static let feedbackEmail = "jon@shard.works"
+    static let feedbackEmail = "jon-build@proton.me"
     static let githubIssuesURL = "https://github.com/jonc102/marksmith/issues"
     static let githubRepoURL = "https://github.com/jonc102/marksmith"
 }

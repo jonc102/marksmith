@@ -10,7 +10,7 @@
 
 Please do **not** open a public GitHub issue for security vulnerabilities.
 
-Instead, email: **security@jonathancheung.com**
+Instead, email: **jon-build@proton.me**
 
 Include:
 - A description of the vulnerability
