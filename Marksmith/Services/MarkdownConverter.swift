@@ -118,7 +118,7 @@ private struct HTMLVisitor: MarkupVisitor {
     }
 
     mutating func visitHTMLBlock(_ html: HTMLBlock) -> String {
-        return html.rawHTML
+        return escapeHTML(html.rawHTML)
     }
 
     // MARK: - List Elements
@@ -237,7 +237,7 @@ private struct HTMLVisitor: MarkupVisitor {
     }
 
     mutating func visitInlineHTML(_ inlineHTML: InlineHTML) -> String {
-        return inlineHTML.rawHTML
+        return escapeHTML(inlineHTML.rawHTML)
     }
 
     mutating func visitSoftBreak(_ softBreak: SoftBreak) -> String {

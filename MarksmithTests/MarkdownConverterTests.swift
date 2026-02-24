@@ -228,6 +228,18 @@ final class MarkdownConverterTests: XCTestCase {
         XCTAssertFalse(result.html.contains("<script>alert"))
     }
 
+    func testHTMLBlockIsEscaped() {
+        let result = converter.convert(markdown: "<img onerror=\"javascript:alert('xss')\" src=\"x\">")
+        XCTAssertFalse(result.html.contains("<img onerror"), "Raw HTML block should be escaped")
+        XCTAssertTrue(result.html.contains("&lt;img"))
+    }
+
+    func testInlineHTMLIsEscaped() {
+        let result = converter.convert(markdown: "Hello <script>alert('xss')</script> world")
+        XCTAssertFalse(result.html.contains("<script>"), "Inline HTML should be escaped")
+        XCTAssertTrue(result.html.contains("&lt;script&gt;"))
+    }
+
     func testLineBreak() {
         // Two trailing spaces followed by newline create a hard line break
         let result = converter.convert(markdown: "Line one  \nLine two")

@@ -10,7 +10,7 @@ Swift · SwiftUI · macOS 13+ · `swift-markdown` (SPM) · XcodeGen · Bundle ID
 
 > **Before every release commit**: bump `MARKETING_VERSION` + `CURRENT_PROJECT_VERSION` in `project.yml`, and update "Current version" below.
 
-**Current version**: 1.2.0 (build 3)
+**Current version**: 1.2.1 (build 4)
 
 **Versioning convention** (single source of truth: `project.yml`):
 
@@ -53,7 +53,7 @@ Two independent fields in `project.yml`:
 |---------|-------------|
 | `xcodegen generate` | Generate `.xcodeproj` from `project.yml` |
 | `xcodebuild build -project Marksmith.xcodeproj -scheme Marksmith` | Build the app |
-| `xcodebuild test -project Marksmith.xcodeproj -scheme Marksmith` | Run all 75 unit tests |
+| `xcodebuild test -project Marksmith.xcodeproj -scheme Marksmith` | Run all 77 unit tests |
 | `xcodebuild test -only-testing:MarksmithTests/MarkdownDetectorTests` | Run a single test class |
 | `./Scripts/build-release.sh` | Build and package unsigned DMG |
 | `SIGN=1 ./Scripts/build-release.sh` | Build signed DMG (requires Developer ID) |
@@ -69,7 +69,7 @@ Marksmith/
 │   ├── Services/      # ClipboardMonitor, MarkdownDetector, MarkdownConverter, ClipboardWriter
 │   ├── Utilities/     # Constants, PasteboardTypes (marker extension)
 │   └── Resources/     # Assets.xcassets, Info.plist
-├── MarksmithTests/  # 75 tests: detector (31), converter (27), writer (12), performance (5)
+├── MarksmithTests/  # 77 tests: detector (31), converter (27), writer (12), performance (5)
 ├── Scripts/             # build-release.sh, ExportOptions.plist, generate-icon.swift, generate-menubar-icon.swift
 ├── docs/                # PLAN.md, QA.md
 └── project.yml          # XcodeGen configuration
@@ -201,13 +201,14 @@ static let licenseValidationTimeout: TimeInterval // 15
 - **Operator precedence with Optional Bool** — `!optional?.contains(...) ?? true` has wrong precedence; use `optional?.contains(...) != true` instead
 - **Timer RunLoop mode** — must add timer to `.common` mode via `RunLoop.current.add(timer!, forMode: .common)` so it fires even while menus are open
 - **`@MainActor` access from Timer** — Timer callback runs on main thread but isn't annotated `@MainActor`; use `Task { @MainActor in ... }` for AppState mutations
+- **Contact email lives in multiple places** — `Constants.swift` (`feedbackEmail`), `SECURITY.md`, and GitHub release notes (`gh release view <tag>`). Update all when changing email.
 
 ## Testing
 
-75 tests across 4 test files:
+77 tests across 4 test files:
 
 - `MarkdownDetectorTests` (31 tests) — positive (all GFM patterns), negative (plain text, URLs, emails), edge cases (empty, whitespace, threshold boundary, score capping, zero threshold)
-- `MarkdownConverterTests` (27 tests) — all GFM elements produce correct HTML tags, RTF data is non-nil, HTML entities escaped, CSS styling present, full document structure, XSS prevention in code blocks
+- `MarkdownConverterTests` (29 tests) — all GFM elements produce correct HTML tags, RTF data is non-nil, HTML entities escaped, CSS styling present, full document structure, XSS prevention in code blocks and raw HTML
 - `ClipboardWriterTests` (12 tests) — all pasteboard types written, RTF conditional, marker always present, content integrity, clearing old content
 - `MarkdownPerformanceTests` (5 tests) — detector and converter timing with typical and large fixtures, size guard assertion
 
@@ -224,7 +225,7 @@ static let licenseValidationTimeout: TimeInterval // 15
 ## Implementation Status
 
 Milestones 1–11 are complete (plus M10 automated portions). See `docs/PLAN.md` for remaining tasks:
-- ~~**Milestone 7**: Build verification~~ ✓ (75 tests passing)
+- ~~**Milestone 7**: Build verification~~ ✓ (77 tests passing)
 - ~~**Milestone 8**: Manual QA testing~~ ✓
 - ~~**Milestone 9**: App icon design~~ ✓ (app icon + custom M↓ menu bar icon)
 - ~~**Milestone 10**: Performance profiling~~ ✓ (automated; Instruments skipped)
