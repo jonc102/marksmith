@@ -18,17 +18,17 @@ Two independent fields in `project.yml`:
 
 | Field | Current | Meaning |
 |---|---|---|
-| `MARKETING_VERSION` | `1.2.0` | User-visible version shown in About window and App Store |
-| `CURRENT_PROJECT_VERSION` | `3` | Build number — monotonically increasing integer, never resets |
+| `MARKETING_VERSION` | `1.2.1` | User-visible version shown in About window and App Store |
+| `CURRENT_PROJECT_VERSION` | `4` | Build number — monotonically increasing integer, never resets |
 
 **When to bump what:**
 
 | Release type | `MARKETING_VERSION` | `CURRENT_PROJECT_VERSION` | Example |
 |---|---|---|---|
-| Bug fix | Increment patch | +1 | 1.2.0 → 1.2.1, build 4 |
-| New feature | Increment minor, reset patch | +1 | 1.2.0 → 1.3.0, build 4 |
-| Major / monetization | Increment major, reset minor+patch | +1 | 1.2.0 → 2.0.0, build 4 |
-| Beta / hotfix build | No change | +1 | 1.2.0 build 3 → 1.2.0 build 4 |
+| Bug fix | Increment patch | +1 | 1.2.1 → 1.2.2, build 5 |
+| New feature | Increment minor, reset patch | +1 | 1.2.1 → 1.3.0, build 5 |
+| Major / monetization | Increment major, reset minor+patch | +1 | 1.2.1 → 2.0.0, build 5 |
+| Beta / hotfix build | No change | +1 | 1.2.1 build 4 → 1.2.1 build 5 |
 
 **Rules:**
 - `CURRENT_PROJECT_VERSION` always increments for every release build — never resets, never repeats
@@ -218,7 +218,7 @@ static let licenseValidationTimeout: TimeInterval // 15
 
 ## Distribution Strategy
 
-**Current (v1.2.0)**: Unsigned DMG via GitHub Releases. Recipients bypass Gatekeeper via System Settings → Privacy & Security → Security → Open Anyway on first launch.
+**Current (v1.2.1)**: Unsigned DMG via GitHub Releases. Recipients bypass Gatekeeper via System Settings → Privacy & Security → Security → Open Anyway on first launch.
 
 **Future (v2.0)**: Source-available under FSL (Functional Source License, converts to MIT after 2 years). Signed+notarized DMG via Apple Developer Program. 14-day free trial with full lockout on expiry. One-time lifetime unlock ($9-15 USD) via LemonSqueezy/Gumroad — web checkout → license key → API validation → local cache.
 
